@@ -7,8 +7,8 @@ button.addEventListener("click", function() {
     typedText = typedText.replace(/[^a-záàâãéèêíïóôõöúçñ'\s]+/g, "")
 
 
-    showResults(countLettersString(captureLetters(typedText)));
-
+    showResults(countDisplay(captureLetters(typedText)));
+    showResultsWords(countDisplay(countWords(typedText)));
     console.log(typedText);
     console.log(captureLetters(typedText))
 
@@ -18,15 +18,35 @@ function showResults(n){
 
     let divNova = document.createElement("div");
 
+    let newp = document.createElement("p");
+
+    divNova.appendChild(newp);
+
     let kata = document.createTextNode(n);
     
-    divNova.appendChild (kata);
+    newp.appendChild (kata);
 
     let destination = document.getElementById("lettersDiv");
 
     destination.appendChild(divNova);
 }
 
+function showResultsWords(n){
+
+    let divNova = document.createElement("div");
+
+    let newp = document.createElement("p");
+
+    divNova.appendChild(newp);
+
+    let kata = document.createTextNode(n);
+    
+    newp.appendChild (kata);
+
+    let destination = document.getElementById("wordsDivs");
+
+    destination.appendChild(divNova);
+}
 
 function captureLetters (typedText){
 
@@ -67,7 +87,7 @@ function captureLetters (typedText){
     return alfabeto
 }
 
-function countLettersString (objLettersCount){
+function countDisplay (objLettersCount){
 
     let strCountArr = [];
    
@@ -80,7 +100,30 @@ function countLettersString (objLettersCount){
         }
     }
 
-    let strCountLetters = strCountArr.join(', ')
+    let strCountLetters = strCountArr.join(' - ')
 
     return strCountLetters
+}
+
+function isKeyExists(obj,key){
+    return key in obj;
+}
+
+function countWords(typedText){
+
+    let typedTextArr = typedText.split(/\s/);
+    let objWords = {};
+
+    for (let i = 0; i < typedTextArr.length; i++){
+
+        if (isKeyExists(objWords, typedTextArr[i]) === false && typedTextArr[i] !== ""){
+            objWords[typedTextArr[i]] = 0
+        }
+        if (isKeyExists(objWords, typedTextArr[i]) === true){
+            objWords[typedTextArr[i]] += 1
+        }
+
+    }
+
+    return objWords
 }

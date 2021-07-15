@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+
+body{
+    font-size: 18px;
+    font-family: 'Otomanopee One', sans-serif;
+    color: #8b0000;
+    padding: 20px;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+h1{
+    font-size: 24px;
+}
+
+h2{
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#textInput{
+    color: #8b0000;
+    display: block;
+    margin: 0 auto;
+    margin-top: 40px;
+    border: 2px solid #8b0000;
+    padding: 10px;
+    width: 90%;
+}
+
+#countButton{
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    color: #fff;
+    background-color: #8b0000;
+    border: 1px solid #8b0000;
+    font-size: 16px;
+    transition-duration: 0.5s;
+}
+
+#countButton:hover{
+    color: #8b0000;
+    background-color: #fff;
+    box-shadow: 5px 4px 5px 0px #a9a9;
+}
+
+#displayResults{
+    display: flex;
+    flex-direction: column;
+}
+
+#lettersDiv div:nth-child(n){
+    border: 2px solid #8b0000;
+    text-align: justify;
+    font-size: 14px;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+#wordsDivs div:nth-child(n){
+    border: 2px solid #8b0000;
+    text-align: justify;
+    font-size: 14px;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+#lettersDiv div:nth-child(n)::before{
+    content: "Quantas letras possui:";
+}
+
+#wordsDivs div:nth-child(n)::before{
+    content: "Quantas palavras possui:";
+}
+
+@media only screen and (min-width: 500px){
+
+    #textInput{
+        max-width: 450px;
+    }
+
+    #displayResults{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        max-width: 1024px;
+        margin: 20px auto;
+    }
+
+    #lettersDiv div:nth-child(n){
+        max-width: 450px;
+    }
+
+    #wordsDivs div:nth-child(n){
+        max-width: 450px;
+    }
+}
